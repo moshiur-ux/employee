@@ -90,7 +90,7 @@
 
              <div class="form-group">
             <label>Image</label>
-            <input type="file"  name="image" class="form-control" required="">
+            <input type="file"  name="image" accept="image/*" class="form-control" required="">
              </div>
 
 
