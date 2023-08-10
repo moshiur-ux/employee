@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'],function(){
+
 
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
+Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+Route::resource('leaves', App\Http\Controllers\LeaveController::class);
+Route::post('accept-reject-leave/{id}', [App\Http\Controllers\LeaveController::class, 'acceptReject'])->name('accept.reject');
+Route::resource('notices', App\Http\Controllers\NoticeCOntroller::class);
+
+
+});
+
+
+Auth::routes();

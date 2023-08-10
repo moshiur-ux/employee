@@ -1,60 +1,48 @@
 @extends('admin.layouts.master')
 
 @section('content')
+<div class="container mt-5">
+    <div class="row ">
+        <div class="col-md-12">
 
-
-        <div class=" container mt-5">
-
-        <div class="row">
-
-
-        <div class=" col-md-12">
-        <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1"> All Roles</span>
-  </div>
-</nav>
-@if(Session::has('message'))
-            <div class="alert alert-success" role="alert">
-            {{Session::get('message')}}
-
-             </div>
-           
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">All Roles</li>
+              </ol>
+            </nav>
+            @if(Session::has('message'))
+                <div class="alert alert-success">
+                    {{Session::get('message')}}
+                </div>
             @endif
-
-        <table id="datatablesSimple">
-                                    <thead>
-
-                                     
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                   
-                                    <tbody>
-                                        
-                 @if(count($roles)>0)
-
-
-                @foreach($roles as $key => $role)
-
-                
-                    <tr>
-                        <td>{{$key+1}}</td>
-                        <td>{{$role->name}}</td>
-                        <td>{{$role->description}}</td>
-                        <td><a href="{{route('roles.edit',[$role->id])}}"><i class=" fas fa-edit"></i></a></td>
+           
+           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    
+                </tr>
+            </thead>
+           
+            <tbody>
+                @if(count($roles)>0)
+                @foreach($roles as $key=>$role)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$role->name}}</td>
+                    <td>{{$role->description}}</td>
+                    <td>
+                        
+                        <a href="{{route('roles.edit',[$role->id])}}"><i class="fas fa-edit"></i></a></td>
+                      
                         <td><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{$role->id}}"><i class=" fas fa-trash"></i></a>
                     
-                    
-                      
-                        <!-- Modal -->
-<div class="modal fade" id="exampleModal{{$role->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{$role->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <form action="{{route('roles.destroy',[$role->id])}} " method="post">@csrf
         {{method_field('DELETE')}}
@@ -75,38 +63,24 @@
 </form>
   </div>
 </div>
-                    
-                    
+                <!--Modal end-->
+
+
+                   
                     </td>
-                      
-
-
-                       
-                        
-                    </tr>
-
-                    @endforeach
-
-                    @else
-
-                    <td> No roles to display</td>
-
-                    @endif      
-                                       
-                                    </tbody>
-                                </table>
-
-
-
-
+                
+                
+                </tr>
+                @endforeach
+                @else
+                <td>No roles to display</td>
+                @endif
+               
+               
+              
+            </tbody>
+        </table>
         </div>
-
-
-        </div>
-
-
-        </div>
-
-
-
+    </div>
+</div>
 @endsection

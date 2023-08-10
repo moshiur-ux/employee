@@ -78,7 +78,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user =User::find($id);
+        return view('admin.user.edit',compact('user'));
+        
+
     }
 
     /**
@@ -86,7 +89,42 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $this->validate($request,[
+            'name'=>'required',
+            'email' =>'
+            required| string| email| max:255| unique:users,email,'.$id,
+           'department_id'=>'required',
+           'role_id'=>'required',
+           'image'=>'required|mimes:jpeg,jpg,png',
+            'start_from'=>'required',
+            'designation'=>'required'
+
+       ]);
+       $data  = $request->all();
+       $user= User::find($id);
+       if($request->hasFile('image')){
+           $image=$request->image->hashName();
+           $request->image->move(public_path('profile'),$image);
+
+       }
+       else{
+           $image = $user->image;
+       }
+       if($request->password)
+       {
+        $password=$request->password;
+       }
+       else{
+        $password=$user->password;
+
+       }
+       $data['image']=$image;
+       $data['password']=bcrypt($password);
+       $user->update($data);
+       return redirect()->back()->with('message','User Updated
+       Successfully');
+
     }
 
     /**
@@ -94,6 +132,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->back()->with('message','User Deleted
+        Successfully');
+        
     }
 }
