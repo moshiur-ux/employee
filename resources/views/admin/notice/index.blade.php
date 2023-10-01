@@ -26,15 +26,14 @@
                      <p class="badge badge-warning">Created By:{{$notice->name}}</p>
                 </div>
                 <div class="card-footer">
-                     @if(isset(auth()->user()->role->permission['name']['notice']['can-edit']))
+                   
                     <a href="{{route('notices.edit',[$notice->id])}}"><i class="fas fa-edit"></i></a>
-                    @endif
+                 
                     <span class="float-right">
-                         @if(isset(auth()->user()->role->permission['name']['notice']['can-delete']))
-                         <a href="#" data-toggle="modal" data-target="#exampleModal{{$notice->id}}">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                    @endif
+                     
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal{{$notice->id}}"><i class=" fas fa-trash"></i></a>
+                    
+                   
                     <!-- Modal -->
                 <div class="modal fade" id="exampleModal{{$notice->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -74,4 +73,5 @@
         </div>
     </div>
 </div>
+
 @endsection

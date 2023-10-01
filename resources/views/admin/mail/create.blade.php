@@ -17,7 +17,7 @@
                     {{Session::get('message')}}
                 </div>
             @endif
-            <form action="{{route('mails.store')}}" method="post" enctype="multipart/form-data">@csrf
+            <form action="{{route('store')}}" method="post" enctype="multipart/form-data">@csrf
             <div class="card">
                 <div class="card-header">Send Email</div>
 
@@ -80,12 +80,12 @@
         </div>
     </div>
 </div>
-<style type="text/css">
+<!-- <style type="text/css">
     #department{
         display: none;
     }
     #person{
         display: none;
     }
-</style>
+</style> -->
 @endsection

@@ -2,7 +2,6 @@
 
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +35,8 @@ Route::resource('permissions', App\Http\Controllers\PermissionController::class)
 Route::resource('leaves', App\Http\Controllers\LeaveController::class);
 Route::post('accept-reject-leave/{id}', [App\Http\Controllers\LeaveController::class, 'acceptReject'])->name('accept.reject');
 Route::resource('notices', App\Http\Controllers\NoticeCOntroller::class);
+Route::get('/mail','App\Http\Controllers\MailController@create');
+Route::post('/mail','App\Http\Controllers\MailController@store')->name('store');
 
 
 });
