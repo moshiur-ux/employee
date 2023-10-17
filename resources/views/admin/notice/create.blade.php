@@ -12,10 +12,11 @@
               </ol>
             </nav>
             @if(Session::has('message'))
+        
                 <div class="alert alert-success">
                     {{Session::get('message')}}
                 </div>
-            @endif
+                @endif
             <form action="{{route('notices.store')}}" method="post">@csrf
             <div class="card">
                 <div class="card-header">Create New Notice</div>

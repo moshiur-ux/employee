@@ -33,6 +33,7 @@ Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::resource('leaves', App\Http\Controllers\LeaveController::class);
+Route::resource('notices', App\Http\Controllers\NoticeCOntroller::class);
 Route::post('accept-reject-leave/{id}', [App\Http\Controllers\LeaveController::class, 'acceptReject'])->name('accept.reject');
 Route::resource('notices', App\Http\Controllers\NoticeCOntroller::class);
 Route::get('/mail','App\Http\Controllers\MailController@create');

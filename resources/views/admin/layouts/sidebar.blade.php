@@ -77,8 +77,9 @@
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError1" aria-expanded="false" aria-controls="pagesCollapseError1">
-                                    Leave
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Leave
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     
 
@@ -89,14 +90,33 @@
                                         </nav>  
 
                                     </div>  
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseErr" aria-expanded="false" aria-controls="pagesCollapseErr">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Notices
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    
+
+                                    <div class="collapse" id="pagesCollapseErr" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="{{route('notices.index')}}">View Notices</a>
+                                            <a class="nav-link" href="{{route('notices.create')}}">Create Notices</a>
+                                        </nav>  
+
+                                    </div>  
 
 
-                            
+                                    <a class="nav-link" href="{{url('/mail')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                                Mail
+                            </a>
+                                    <a class="nav-link" href="{{url('/login')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                LOGIN
+                            </a>
                            
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
                     </div>
+                   
                 </nav>
             </div>
